@@ -25,38 +25,6 @@
         }
     </style>
 
-    <!-- Mobile - Exit detection Script -->
-    <script type="text/javascript">
-        var n = 0;
-
-        function updateCount() {
-
-            // Update onload count.
-            n += 1;
-
-            // Log the onload count.
-            console.log('iframe onload count: ' + n.toString());
-
-        }
-
-        function exitDetection() {
-
-            // Only show alert when tab is hidden and
-            // there's been no new load event(s).
-
-            if (document.visibilityState == 'hidden' && n <= 1)
-            {
-                // Show exit alert.
-                alert('Registration only takes 30 seconds.')
-            }
-
-        }
-
-        // Detects changes in visibility.
-        document.addEventListener('visibilitychange', exitDetection);
-
-    </script>
-
 </head>
 
 <body>
