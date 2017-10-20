@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Snapfk.me - Hookup Redirect</title>
@@ -24,6 +25,34 @@
         }
     </style>
 
+    <!-- Exit -->
+    <script>
+        // Spoofs history.
+        function historySpoof() {
+
+            // Create timestamp.
+            var ts = window.location.href + '#' + + new Date();
+
+            // Change history.
+            history.pushState(null, null, ts);
+
+        }
+
+        // Set "previous" URL.
+        historySpoof();
+
+        // Detect exit behavior.
+        window.onhashchange = function () {
+
+            // Notify user,
+            alert('Registration only takes 30 seconds.\n');
+
+            // Set "previous" URL.
+            historySpoof();
+        }
+
+    </script>
+
 </head>
 
 <body>
@@ -31,11 +60,5 @@
     <!-- Iframe -->
     <iframe src="http://struln.com/nxntmkahb/snapfk.me"></iframe>
 
-    <!-- Exit -->
-    <script>
-        window.onpagehide = function() {
-            alert('Don\'t go! Registration only takes 30 seconds.\nI promise 😘')
-        }
-    </script>
-
 </body>
+</html>
