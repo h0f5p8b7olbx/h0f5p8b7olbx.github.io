@@ -25,31 +25,37 @@
         }
     </style>
 
-    <!-- Exit -->
-    <script>
-        // Spoofs history.
-        function historySpoof() {
+    <!-- Mobile - Exit detection Script -->
+    <script type="text/javascript">
+        var n = 0;
 
-            // Create timestamp.
-            var ts = window.location.href + '#' + + new Date();
+        function updateCount() {
 
-            // Change history.
-            history.pushState(null, null, ts);
+            // Update onload count.
+            n += 1;
+
+            // Log the onload count.
+            console.log('iframe onload count: ' + n.toString());
 
         }
 
-        // Set "previous" URL.
-        historySpoof();
+        function exitDetection() {
 
-        // Detect exit behavior.
-        window.onhashchange = function () {
+            // Only show alert when tab is hidden and
+            // there's been no new load event(s).
 
-            // Notify user,
-            alert('Registration only takes 30 seconds.\n');
+            if (document.visibilityState == 'hidden' && n <= 1)
+            {
+                // Show exit alert.
+                alert('Registration only takes 30 seconds.\n')
+            }
 
-            // Set "previous" URL.
-            historySpoof();
+            console.log('I\'ve been here.');
+
         }
+
+        // Detects changes in visibility.
+        document.addEventListener('visibilitychange', exitDetection);
 
     </script>
 
@@ -57,8 +63,8 @@
 
 <body>
 
-    <!-- Iframe -->
-    <iframe src="http://struln.com/nxntmkahb/snapfk.me"></iframe>
+    <!-- Full Iframe -->
+    <iframe src="http://struln.com/nxntmkahb/snapfk.me" onload="updateCount();"></iframe>
 
 </body>
 </html>
